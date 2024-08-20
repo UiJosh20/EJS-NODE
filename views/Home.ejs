@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+
+    <style type="text/css" media="screen">
+        body {
+            background-color: skyblue;
+            text-decoration-color: white;
+            font-size: 7em;
+        }
+    </style>
+</head>
+
+<body>
+    <center>This is our home page.</center>
+    <div>
+        <center>
+         
+            <% data.forEach(person => { %>
+                <p><%= person.name %></p>
+                <p><%= person.age %></p>
+                <p><%= person.height %></p>
+            <% }) %>
+
+            <% array.forEach(element => { %>
+             
+            <% }) %>
+        </center>
+    </div>
+</body>
+</html>
