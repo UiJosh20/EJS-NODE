@@ -1,10 +1,12 @@
+const { render } = require("ejs");
 const expressUse = require("express");
 const app = expressUse();
 const PORT = 8000;
 const HOSTNAME = "localhost";
-
+const bodyParser = require("body-parser")
 app.set("view engine", "ejs");
 
+app.use(bodyParser.urlencoded({ extended: true }))
 app.get("/", (req, res) => {
    let data =  [
     { name: "anonymous", age: 12, height: "6.5ft" },
@@ -20,6 +22,17 @@ app.get("/user",(req, res)=>{
     .then((data) => {
       res.render("github", {data:data})
     })
+})
+
+app.get("/addUser",(req, res)=>{
+  res.render("add")
+})
+
+let studentArray = []
+app.post("/addName",(req, res)=>{
+  studentArray.push(req.body);
+  localStorage.setItem("student", JSON.stringify(studentArray))
+  res.render("list", {data:studentArray})
 })
 
 app.listen(PORT, HOSTNAME, () => {
